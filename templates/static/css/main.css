@@ -1,0 +1,72 @@
+body{
+    background-color: azure;
+    font-family: 'Roboto', sans-serif;
+}
+
+.page-container{
+
+}
+
+.main-title{
+    text-align: center;
+    margin: 50px auto;
+    width: 700px;
+    font-size: 26px;
+    letter-spacing: 5px;
+    font-family: 'Playfair Display', serif;
+}
+
+.sub-title{
+    text-align: center;
+    margin: 50px auto;
+    width: 350px;
+    font-size: 16px;
+}
+
+.scoring-card{
+    margin: auto;
+    width: 350px;
+    border: 1px solid #94bbce;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: none;
+}
+
+.scoring-card__title{
+    font-size: 20px;
+    text-align: center;
+}
+
+.scoring-card__row{
+    min-height: 30px;
+    line-height: 30px;
+    margin: 6px;
+    font-size: 16px;
+    border: 1px solid #94bbce;
+    padding: 4px;
+}
+
+.scoring-card__row__span{
+
+}
+
+.scoring-card__row__input{
+    width: 20px;
+    height: 20px;
+    float: right;
+}
+
+.button-grid{
+    margin: 30px auto;
+    width: 350px;
+    text-align: center;
+}
+
+.button-grid__button{
+    background-color: rgba(0, 186, 0, 0.45);
+    border: 1px solid #94bbce;
+    width: 150px;
+    font-size: 16px;
+    height: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
