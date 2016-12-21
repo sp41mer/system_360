@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from django.contrib import admin
+
+from core.views import Fish
 
 urlpatterns = [
-    # url(r'teacher/all/$', TeacherListView.as_view(), name="all_teachers"),
+    url(r'test/$', Fish.as_view(), name="test"),
+
     # url(r'teacher/add/$', TeacherCreateView.as_view(), name="add_teacher"),
     # url(r'teacher/(?P<pk>\d+)/update/$', TeacherUpdateView.as_view(), name="update_teacher"),
     #
