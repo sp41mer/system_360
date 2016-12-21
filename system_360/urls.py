@@ -1,6 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    url(r'^core/', include('core.urls', 'core')),
+    url(r'^marks/', include('marks.urls', 'marks')),
 ]
