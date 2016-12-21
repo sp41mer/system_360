@@ -1,321 +1,313 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load staticfiles %}
-    <meta charset="UTF-8">
-    <title>Оценка 360 градусов</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto" rel="stylesheet">
-</head>
-<body>
-    <div class = "page-container">
-        <div class = "main-title">
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="main-title">
             СИСТЕМА ОЦЕНИВАНИЯ 360 ГРАДУСОВ
         </div>
-        <div class = "sub-title">
+        <div class="sub-title">
             Оцениваемый: Топоров Сергей Семенович
         </div>
-        <div class = "scoring-card ">
-            <div class = "scoring-card__title">
+        <div class="scoring-card ">
+            <div class="scoring-card__title">
                 <h4>Укажите веса компетенций</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Профессионализм</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Профессионализм</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Управление</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Управление</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Коммуникация</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Коммуникация</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Клиентоориентированность</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Клиентоориентированность</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Эффективность, качество работы</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Эффективность, качество работы</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Ориентация на развитие</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Ориентация на развитие</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Лидерство</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Лидерство</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Работа в команде</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Работа в команде</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
 
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Профессионализм</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Знание функциональных обязанностей</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Знание функциональных обязанностей</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Уровень профессиональной мотивации</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Уровень профессиональной мотивации</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Рациональное распределение ресурсов для выполнения обязанностей (время, план работы)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Рациональное распределение ресурсов для выполнения обязанностей (время, план работы)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Знание тонкостей и деталей</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Знание тонкостей и деталей</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Знание программных продуктов/ Владение ИТ</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Знание программных продуктов/ Владение ИТ</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Обучаемость</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Обучаемость</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Заинтересованность в работе</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Заинтересованность в работе</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Профессиональная надежность</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Профессиональная надежность</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Управление</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Предоставление обратной связи подчиненным</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Предоставление обратной связи подчиненным</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Уровень профессиональной мотивации</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Уровень профессиональной мотивации</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Расстановка персонала</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Расстановка персонала</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Состояние дел в возглавляемом коллективе</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Состояние дел в возглавляемом коллективе</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение делегировать полномочия</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение делегировать полномочия</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение ставить цели и задачи перед коллективом</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение ставить цели и задачи перед коллективом</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Коммуникация</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Бесконфликтность </span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Бесконфликтность </span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Навыки общения</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Навыки общения</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Дипломатичность </span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Дипломатичность </span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Способность выражать мысли в устной и письменной форме</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Способность выражать мысли в устной и письменной форме</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Клиентоориентированность</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Отношения с клиентом</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Отношения с клиентом</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Фокус на потребностях клиента</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Фокус на потребностях клиента</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Уровень обслуживания клиента</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Уровень обслуживания клиента</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Сопровождение клиента</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Сопровождение клиента</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Распространение полезной информации о компании, проектах, продуктах</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Распространение полезной информации о компании, проектах, продуктах</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Эффективность качество работы</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Качество работы</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Качество работы</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Планирование (рабочий день)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Планирование (рабочий день)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Своевременное выполнение работы (точно в срок и качественно/профессионально)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Своевременное выполнение работы (точно в срок и качественно/профессионально)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Производительность труда</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Производительность труда</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Эффективность в достижении целей</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Эффективность в достижении целей</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Ориентация на развитие</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Ориентация на инновации</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Ориентация на инновации</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Работа с использованием информации (предложение новых акций, реклама каких-либо услуг)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Работа с использованием информации (предложение новых акций, реклама каких-либо услуг)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Работа со стратегиями</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Работа со стратегиями</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Целеполагание</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Целеполагание</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Способность учиться на ошибках и не повторять их</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Способность учиться на ошибках и не повторять их</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Лидерство</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Инициатива</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Инициатива</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Самостоятельность</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Самостоятельность</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Ориентированность на результат</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Ориентированность на результат</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Ориентированность на отношения (быть заинтересованным в более профессиональном общении, поведении с коллегами, руководителями, с каждым клиентом)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Ориентированность на отношения (быть заинтересованным в более профессиональном общении, поведении с коллегами, руководителями, с каждым клиентом)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Формальное лидерство (профессиональное) </span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Формальное лидерство (профессиональное) </span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Неформальное лидерство (в социуме)</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Неформальное лидерство (в социуме)</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
             </div>
         </div>
-        <div class = "scoring-card">
-            <div class = "scoring-card__title">
+        <div class="scoring-card">
+            <div class="scoring-card__title">
                 <h4>Работа в команде</h4>
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Преданность компании</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Преданность компании</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение работать в команде</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение работать в команде</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Скорость вхождения в коллектив</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Скорость вхождения в коллектив</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Скорость принятия нового члена коллектива</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Скорость принятия нового члена коллектива</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение работать в общем ритме </span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение работать в общем ритме </span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение управлять эмоциями, не проявлять личных симпатий и антипатий</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение управлять эмоциями, не проявлять личных симпатий и антипатий</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение принимать чужую точку зрения и признавать свои ошибки</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение принимать чужую точку зрения и признавать свои ошибки</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение делегировать полномочия (</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение делегировать полномочия (</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение руководить  в зависимости от целей</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение руководить  в зависимости от целей</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение подчиняться в зависимости от целей</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение подчиняться в зависимости от целей</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
-            <div class = "scoring-card__row">
-                <span class = "scoring-card__row__span">Умение смирять личные амбиции и оказывать помощь коллегам</span>
-                <input class = "scoring-card__row__input" type="text">
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">Умение смирять личные амбиции и оказывать помощь коллегам</span>
+                <input class="scoring-card__row__input" type="text">
             </div>
             <div class="button-grid">
                 <button class="button-grid__button">Сохранить</button>
@@ -323,8 +315,4 @@
         </div>
 
     </div>
-    <script src="{% static 'js/sweetalert.min.js' %}"></script>
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}

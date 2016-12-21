@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load staticfiles %}
-    <meta charset="UTF-8">
-    <title>Оценка 360 градусов</title>
-    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto" rel="stylesheet">
-</head>
-<body>
-    <div class = "page-container">
-        <div class = "main-title">
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="main-title">
             СИСТЕМА ОЦЕНИВАНИЯ 360 ГРАДУСОВ
         </div>
-        <div class = "sub-title">
+        <div class="sub-title">
             Авторизация
         </div>
-        <div class = "scoring-card ">
-            <div class = "scoring-card__title">
+        <div class="scoring-card ">
+            <div class="scoring-card__title">
                 <h4>Укажите веса компетенций</h4>
             </div>
             <form method="post" action="{% url "login" %}">
                 {% csrf_token %}
-                <div class = "scoring-card__row">
+                <div class="scoring-card__row">
                     {{ form.username }}
                 </div>
-                <div class = "scoring-card__row">
+                <div class="scoring-card__row">
                     {{ form.password }}
                 </div>
                 <div class="button-grid">
-                    <input class="button-grid__button" type="submit"  value="Войти" />
-                    <input type="hidden" name="next" value="{% url "core:test" %}" />
+                    <input class="button-grid__button" type="submit" value="Войти"/>
+                    <input type="hidden" name="next" value="{% url "core:test" %}"/>
                 </div>
             </form>
         </div>
 
     </div>
-    <script src="{% static 'js/sweetalert.min.js' %}"></script>
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}
