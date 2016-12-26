@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView
 
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
@@ -20,7 +21,7 @@ class SuccessMixin(CreateView):
             form.instance.rated_user = User.objects.filter(id=user_id).first()
             return super(SuccessMixin, self).form_valid(form)
         else:
-            return
+            return ValueError
 
 
 class WeightCreateView(SuccessMixin):
@@ -68,3 +69,12 @@ class TeamworkMarkCreateView(SuccessMixin):
     form_class = TeamworkMarkCreateForm
 
 
+class ResultView(View):
+    def dispatch(self, request, *args, **kwargs):
+        res = super(ResultView, self).dispatch(request, args, kwargs)
+        pk = kwargs.get("pk")
+        if pk:
+            # place your code here
+            teamwork_mark = TeamworkMark.objects.filter(id=pk)
+
+        return res

@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from marks.views import WeightCreateView, ProfessionalismMarkCreateView, ControlMarkCreateView, \
     CommunicationMarkCreateView, ClientOrientationMarkCreateView, EfficiencyMarkCreateView, EvolutionMarkCreateView, \
-    LeadershipMarkCreateView, TeamworkMarkCreateView
+    LeadershipMarkCreateView, TeamworkMarkCreateView, ResultView
 
 urlpatterns = [
     url(r'weight/add/$', WeightCreateView.as_view(), name="add_weight"),
@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'leadership/add/$', LeadershipMarkCreateView.as_view(), name="add_leadership_mark"),
     url(r'teamwork/add/$', TeamworkMarkCreateView.as_view(), name="add_teamwork_mark"),
 
-    # url(r'teacher/add/$', TeacherCreateView.as_view(), name="add_teacher"),
+    url(r'result/(?P<pk>\d+)$', ResultView.as_view(), name="show_result"),
     # url(r'teacher/(?P<pk>\d+)/update/$', TeacherUpdateView.as_view(), name="update_teacher"),
     #
     # url(r'student/(?P<group>\d+)/all/$', StudentListView.as_view(), name="all_students"),
