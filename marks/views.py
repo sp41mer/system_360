@@ -84,7 +84,7 @@ class ResultView(View):
         res = super(ResultView, self).get_context_data()
 
         res.update({
-            "fill_mark": self.full_mark
+            "full_mark": self.full_mark
         })
 
         return res
