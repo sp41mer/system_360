@@ -94,7 +94,7 @@ class EfficiencyMark(UserInheritance):
     planning = models.IntegerField(verbose_name='Планирование (рабочий день)',
                                    validators=[MaxValueValidator(10), MinValueValidator(1)])
     timely = models.IntegerField(
-        verbose_name='Своевременное выполнение работы (точно в срок и качественно/профессионально)',
+        verbose_name='Своевременное выполнение работы (качественно/профессионально)',
         validators=[MaxValueValidator(10), MinValueValidator(1)])
     performance = models.IntegerField(verbose_name='Производительность труда',
                                       validators=[MaxValueValidator(10), MinValueValidator(1)])
