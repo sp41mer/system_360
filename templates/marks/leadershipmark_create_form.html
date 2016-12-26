@@ -1,0 +1,35 @@
+<div class="scoring-card">
+    <form action="{% url "marks:add_leadership_mark" %}">
+        {% csrf_token %}
+        <div class="scoring-card__title">
+            <h4>Лидерство</h4>
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.initiative.label }}</span>
+            {{ leadership_mark.initiative }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.independence.label }}</span>
+            {{ leadership_mark.independence }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.relations.label }}</span>
+            {{ leadership_mark.relations }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.relations_focus.label }}</span>
+            {{ leadership_mark.relations_focus }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.formal_leadership.label }}</span>
+            {{ leadership_mark.formal_leadership }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ leadership_mark.informal_leadership.label }}</span>
+            {{ leadership_mark.informal_leadership }}
+        </div>
+        <div class="button-grid">
+            <button class="button-grid__button">Сохранить</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="scoring-card">
+    <form action="{% url "marks:add_client_orientation_mark" %}">
+        {% csrf_token %}
+        <div class="scoring-card__title">
+            <h4>Клиентоориентированность</h4>
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ client_orientation_mark.contact.label }}</span>
+            {{ client_orientation_mark.contact }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ client_orientation_mark.requirements.label }}</span>
+            {{ client_orientation_mark.requirements }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ client_orientation_mark.service.label }}</span>
+            {{ client_orientation_mark.service }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ client_orientation_mark.accompaniment.label }}</span>
+            {{ client_orientation_mark.accompaniment }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ client_orientation_mark.dissemination.label }}</span>
+            {{ client_orientation_mark.dissemination }}
+        </div>
+        <div class="button-grid">
+            <button class="button-grid__button">Сохранить</button>
+        </div>
+    </form>
+</div>

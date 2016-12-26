@@ -1,0 +1,43 @@
+<div class="scoring-card">
+    <form action="{% url "marks:add_professionalism_mark" %}">
+        {% csrf_token %}
+        <div class="scoring-card__title">
+            <h4>Профессионализм</h4>
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.duty_knowledge.label }}</span>
+            {{ professionalism_mark.duty_knowledge }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.motivation.label }}</span>
+            {{ professionalism_mark.motivation }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.time_management.label }}</span>
+            {{ professionalism_mark.time_management }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.details_knowledge.label }}</span>
+            {{ professionalism_mark.details_knowledge }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.IT_knowledge.label }}</span>
+            {{ professionalism_mark.IT_knowledge }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.learnability.label }}</span>
+            {{ professionalism_mark.learnability }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.work_interest.label }}</span>
+            {{ professionalism_mark.work_interest }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ professionalism_mark.reliability.label }}</span>
+            {{ professionalism_mark.reliability }}
+        </div>
+        <div class="button-grid">
+            <button class="button-grid__button">Сохранить</button>
+        </div>
+    </form>
+</div>

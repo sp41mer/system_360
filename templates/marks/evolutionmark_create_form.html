@@ -1,0 +1,31 @@
+<div class="scoring-card">
+    <form action="{% url "marks:add_evolution_mark" %}">
+        {% csrf_token %}
+        <div class="scoring-card__title">
+            <h4>Ориентация на развитие</h4>
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ evolution_mark.innovations.label }}</span>
+            {{ evolution_mark.innovations }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ evolution_mark.info.label }}</span>
+            {{ evolution_mark.info }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ evolution_mark.strategies.label }}</span>
+            {{ evolution_mark.strategies }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ evolution_mark.targeting.label }}</span>
+            {{ evolution_mark.targeting }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ evolution_mark.mistakes.label }}</span>
+            {{ evolution_mark.mistakes }}
+        </div>
+        <div class="button-grid">
+            <button class="button-grid__button">Сохранить</button>
+        </div>
+    </form>
+</div>

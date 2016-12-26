@@ -1,0 +1,43 @@
+<div class="scoring-card ">
+    <form action="{% url "marks:add_weight" %}">
+        {% csrf_token %}
+        <div class="scoring-card__title">
+            <h4>Укажите веса компетенций</h4>
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.professionalism.label }}</span>
+            {{ weight_form.professionalism }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.control.label }}</span>
+            {{ weight_form.control }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.communication.label }}</span>
+            {{ weight_form.communication }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.client_orientation.label }}</span>
+            {{ weight_form.client_orientation }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.efficiency.label }}</span>
+            {{ weight_form.efficiency }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.evolution.label }}</span>
+            {{ weight_form.evolution }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.leader.label }}</span>
+            {{ weight_form.leader }}
+        </div>
+        <div class="scoring-card__row">
+            <span class="scoring-card__row__span">{{ weight_form.teamwork.label }}</span>
+            {{ weight_form.teamwork }}
+        </div>
+        <div class="button-grid">
+            <button class="button-grid__button">Сохранить</button>
+        </div>
+    </form>
+</div>
