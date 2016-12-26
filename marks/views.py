@@ -76,5 +76,15 @@ class ResultView(View):
         if pk:
             # place your code here
             teamwork_mark = TeamworkMark.objects.filter(id=pk)
+            self.full_mark = 123213
+
+        return res
+
+    def get_context_data(self, **kwargs):
+        res = super(ResultView, self).get_context_data()
+
+        res.update({
+            "fill_mark": self.full_mark
+        })
 
         return res
