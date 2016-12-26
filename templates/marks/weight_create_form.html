@@ -1,5 +1,5 @@
 <div class="scoring-card ">
-    <form action="{% url "marks:add_weight" %}">
+    <form class="js-form-submit" action="{% url "marks:add_weight" %}">
         {% csrf_token %}
         <div class="scoring-card__title">
             <h4>Укажите веса компетенций</h4>

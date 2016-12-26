@@ -1,5 +1,5 @@
 <div class="scoring-card">
-    <form action="{% url "marks:add_communication_mark" %}">
+    <form class="js-form-submit" action="{% url "marks:add_communication_mark" %}">
         {% csrf_token %}
         <div class="scoring-card__title">
             <h4>Коммуникация</h4>

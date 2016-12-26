@@ -20,3 +20,13 @@ $(document).ready(function(){
         show(cards);
     });
 });
+
+$(".js-form-submit").submit(function (e) {
+    e.preventDefault();
+
+    var url = $(this).attr('action');
+    var user_id = $(".marked_user__id").val();
+    var data = $(this).serialize() + "&user_id=" + user_id;
+    // TODO: валидация
+    $.post(url, data)
+});

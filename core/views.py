@@ -1,11 +1,13 @@
-from django.views.generic import TemplateView
+from django.contrib.auth.models import User
+from django.views.generic import DetailView
 
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     CommunicationMarkCreateForm, ClientOrientationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm
 
 
-class Main360System(TemplateView):
+class Main360System(DetailView):
+    model = User
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):

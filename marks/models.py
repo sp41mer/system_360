@@ -5,7 +5,7 @@ from django.db import models
 
 class UserInheritance(models.Model):
     who_rated = models.ForeignKey(verbose_name='Оценивший пользователь', to=User, related_name='who_rated')
-    rated_user = models.ForeignKey(verbose_name='Оценивший пользователь', to=User, related_name='rated_user')
+    rated_user = models.ForeignKey(verbose_name='Оцениваемый пользователь', to=User, related_name='rated_user')
 
 
 class Weight(UserInheritance):

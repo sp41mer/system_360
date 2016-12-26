@@ -1,5 +1,5 @@
 <div class="scoring-card">
-    <form action="{% url "marks:add_evolution_mark" %}">
+    <form class="js-form-submit" action="{% url "marks:add_evolution_mark" %}">
         {% csrf_token %}
         <div class="scoring-card__title">
             <h4>Ориентация на развитие</h4>

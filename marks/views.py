@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
@@ -7,57 +9,62 @@ from marks.models import Weight, ClientOrientationMark, ControlMark, Communicati
     EfficiencyMark, EvolutionMark, LeadershipMark, TeamworkMark
 
 
-class WeightCreateView(CreateView):
+class SuccessMixin(CreateView):
+    success_url = reverse_lazy("core:test")
+    template_name_suffix = "_create_form"
+
+    def form_valid(self, form):
+        user_id = self.request.POST.get('user_id', None)
+        if user_id:
+            form.instance.who_rated = self.request.user
+            form.instance.rated_user = User.objects.filter(id=user_id).first()
+            return super(SuccessMixin, self).form_valid(form)
+        else:
+            return
+
+
+class WeightCreateView(SuccessMixin):
     model = Weight
     form_class = WeightCreateForm
-    template_name_suffix = "_create_form"
 
 
-class ProfessionalismMarkCreateView(CreateView):
+class ProfessionalismMarkCreateView(SuccessMixin):
     model = ProfessionalismMark
     form_class = ProfessionalismMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class ControlMarkCreateView(CreateView):
+class ControlMarkCreateView(SuccessMixin):
     model = ControlMark
     form_class = ControlMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class CommunicationMarkCreateView(CreateView):
+class CommunicationMarkCreateView(SuccessMixin):
     model = CommunicationMark
     form_class = CommunicationMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class ClientOrientationMarkCreateView(CreateView):
+class ClientOrientationMarkCreateView(SuccessMixin):
     model = ClientOrientationMark
     form_class = ClientOrientationMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class EfficiencyMarkCreateView(CreateView):
+class EfficiencyMarkCreateView(SuccessMixin):
     model = EfficiencyMark
     form_class = EfficiencyMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class EvolutionMarkCreateView(CreateView):
+class EvolutionMarkCreateView(SuccessMixin):
     model = EvolutionMark
     form_class = EvolutionMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class LeadershipMarkCreateView(CreateView):
+class LeadershipMarkCreateView(SuccessMixin):
     model = LeadershipMark
     form_class = LeadershipMarkCreateForm
-    template_name_suffix = "_create_form"
 
 
-class TeamworkMarkCreateView(CreateView):
+class TeamworkMarkCreateView(SuccessMixin):
     model = TeamworkMark
     form_class = TeamworkMarkCreateForm
-    template_name_suffix = "_create_form"
 
 

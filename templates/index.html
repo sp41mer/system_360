@@ -7,7 +7,8 @@
         </div>
 
         <div class="sub-title">
-            Оцениваемый: Топоров Сергей Семенович
+            <input class="marked_user__id" type="hidden" value="{{ object.id }}">
+            Оцениваемый: {{ object.last_name }} {{ object.first_name }}
         </div>
 
         {% include "marks/weight_create_form.html" %}
