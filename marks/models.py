@@ -41,8 +41,8 @@ class ProfessionalismMark(UserInheritance):
     learnability = models.IntegerField(verbose_name='Обучаемость',
                                        validators=[MaxValueValidator(10), MinValueValidator(1)])
 
-    work_interst = models.IntegerField(verbose_name='Заинтересованность в работе',
-                                       validators=[MaxValueValidator(10), MinValueValidator(1)])
+    work_interest = models.IntegerField(verbose_name='Заинтересованность в работе',
+                                        validators=[MaxValueValidator(10), MinValueValidator(1)])
 
     reliability = models.IntegerField(verbose_name='Профессиональная надежность',
                                       validators=[MaxValueValidator(10), MinValueValidator(1)])
@@ -116,7 +116,7 @@ class EvolutionMark(UserInheritance):
                                    validators=[MaxValueValidator(10), MinValueValidator(1)])
 
 
-class TeamworkMark(UserInheritance):
+class LeadershipMark(UserInheritance):
     initiative = models.IntegerField(verbose_name='Инициатива',
                                      validators=[MaxValueValidator(10), MinValueValidator(1)])
     independence = models.IntegerField(verbose_name='Самостоятельность',
@@ -130,3 +130,29 @@ class TeamworkMark(UserInheritance):
                                             validators=[MaxValueValidator(10), MinValueValidator(1)])
     informal_leadership = models.IntegerField(verbose_name='Неформальное лидерство (в социуме)',
                                               validators=[MaxValueValidator(10), MinValueValidator(1)])
+
+
+class TeamworkMark(UserInheritance):
+    loyalty = models.IntegerField(verbose_name='Преданность компании',
+                                  validators=[MaxValueValidator(10), MinValueValidator(1)])
+    teamwork = models.IntegerField(verbose_name='Умение работать в команде',
+                                   validators=[MaxValueValidator(10), MinValueValidator(1)])
+    entry_speed = models.IntegerField(verbose_name='Скорость вхождения в коллектив',
+                                      validators=[MaxValueValidator(10), MinValueValidator(1)])
+    adoption_speed = models.IntegerField(verbose_name='Скорость принятия нового члена коллектива',
+                                         validators=[MaxValueValidator(10), MinValueValidator(1)])
+    general_rhythm = models.IntegerField(verbose_name='Умение работать в общем ритме',
+                                         validators=[MaxValueValidator(10), MinValueValidator(1)])
+    emotions_control = models.IntegerField(
+        verbose_name='Умение управлять эмоциями, не проявлять личных симпатий и антипатий',
+        validators=[MaxValueValidator(10), MinValueValidator(1)])
+    listen = models.IntegerField(verbose_name='Умение принимать чужую точку зрения и признавать свои ошибки',
+                                 validators=[MaxValueValidator(10), MinValueValidator(1)])
+    delegate = models.IntegerField(verbose_name='Умение делегировать полномочия',
+                                   validators=[MaxValueValidator(10), MinValueValidator(1)])
+    objectives_lead = models.IntegerField(verbose_name='Умение руководить  в зависимости от целей',
+                                          validators=[MaxValueValidator(10), MinValueValidator(1)])
+    objectives_comply = models.IntegerField(verbose_name='Умение подчиняться в зависимости от целей',
+                                            validators=[MaxValueValidator(10), MinValueValidator(1)])
+    help = models.IntegerField(verbose_name='Умение смирять личные амбиции и оказывать помощь коллегам',
+                               validators=[MaxValueValidator(10), MinValueValidator(1)])

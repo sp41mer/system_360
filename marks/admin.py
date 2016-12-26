@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from marks.models import Weight, ProfessionalismMark, ControlMark, CommunicationMark, ClientOrientationMark, \
-    EfficiencyMark, EvolutionMark, TeamworkMark
+    EfficiencyMark, EvolutionMark, LeadershipMark
 
 admin.site.register(Weight)
 admin.site.register(ProfessionalismMark)
@@ -10,4 +10,4 @@ admin.site.register(CommunicationMark)
 admin.site.register(ClientOrientationMark)
 admin.site.register(EfficiencyMark)
 admin.site.register(EvolutionMark)
-admin.site.register(TeamworkMark)
+admin.site.register(LeadershipMark)

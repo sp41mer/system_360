@@ -1,8 +1,19 @@
 from django.conf.urls import url
-from django.contrib import admin
+from marks.views import WeightCreateView, ProfessionalismMarkCreateView, ControlMarkCreateView, \
+    CommunicationMarkCreateView, ClientOrientationMarkCreateView, EfficiencyMarkCreateView, EvolutionMarkCreateView, \
+    LeadershipMarkCreateView, TeamworkMarkCreateView
 
 urlpatterns = [
-    # url(r'teacher/all/$', TeacherListView.as_view(), name="all_teachers"),
+    url(r'weight/add/$', WeightCreateView.as_view(), name="add_weight"),
+    url(r'professionalism_mark/add/$', ProfessionalismMarkCreateView.as_view(), name="add_professionalism_mark"),
+    url(r'control_mark/add/$', ControlMarkCreateView.as_view(), name="add_control_mark"),
+    url(r'communication_mark/add/$', CommunicationMarkCreateView.as_view(), name="add_communication_mark"),
+    url(r'client_orientation_mark/add/$', ClientOrientationMarkCreateView.as_view(), name="add_client_orientation_mark"),
+    url(r'efficiency_mark/add/$', EfficiencyMarkCreateView.as_view(), name="add_efficiency_mark"),
+    url(r'evolution_mark/add/$', EvolutionMarkCreateView.as_view(), name="add_evolution_mark"),
+    url(r'leadership_mark/add/$', LeadershipMarkCreateView.as_view(), name="add_leadership_mark"),
+    url(r'teamwork_mark/add/$', TeamworkMarkCreateView.as_view(), name="add_teamwork_mark"),
+
     # url(r'teacher/add/$', TeacherCreateView.as_view(), name="add_teacher"),
     # url(r'teacher/(?P<pk>\d+)/update/$', TeacherUpdateView.as_view(), name="update_teacher"),
     #

@@ -1,9 +1,9 @@
 from django.conf.urls import url
 
-from core.views import Fish
+from core.views import Main360System
 
 urlpatterns = [
-    url(r'test/$', Fish.as_view(), name="test"),
+    url(r'test/$', Main360System.as_view(), name="test"),
 
     # url(r'teacher/add/$', TeacherCreateView.as_view(), name="add_teacher"),
     # url(r'teacher/(?P<pk>\d+)/update/$', TeacherUpdateView.as_view(), name="update_teacher"),

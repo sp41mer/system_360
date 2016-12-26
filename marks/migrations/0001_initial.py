@@ -99,7 +99,7 @@ class Migration(migrations.Migration):
             bases=('marks.userinheritance',),
         ),
         migrations.CreateModel(
-            name='TeamworkMark',
+            name='LeadershipMark',
             fields=[
                 ('userinheritance_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='marks.UserInheritance')),
                 ('initiative', models.IntegerField(validators=[django.core.validators.MaxValueValidator(10), django.core.validators.MinValueValidator(1)], verbose_name='Инициатива')),
