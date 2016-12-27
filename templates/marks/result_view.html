@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="main-title">
+            СИСТЕМА ОЦЕНИВАНИЯ 360 ГРАДУСОВ
+        </div>
+
+        <div class="sub-title">
+            <input class="marked_user__id" type="hidden" value="{{ object.id }}">
+            Оцениваемый: {{ user.last_name }} {{ user.first_name }}
+        </div>
+        <div class="result_view">
+            <div class="result_view__item">
+                Профессионализм
+                <div class="graph" data-percent={{ prof_kpi }}></div>
+            </div>
+            <div class="result_view__item">
+                Управление
+                <div class="graph" data-percent={{ control_kpi }}></div>
+            </div>
+            <div class="result_view__item">
+                Коммуникация
+                <div class="graph" data-percent={{ communication_kpi }}></div>
+            </div>
+
+            <div class="result_view__item">
+                Клиентоориентированность
+                <div class="graph" data-percent={{ client_orientation_kpi }}></div>
+            </div>
+
+            <div class="result_view__item">
+                Эффективность
+                <div class="graph" data-percent={{ efficeincy_kpi }}></div>
+            </div>
+
+            <div class="result_view__item">
+                Ориентация на развитие
+                <div class="graph" data-percent={{ evolution_kpi }}></div>
+            </div>
+
+            <div class="result_view__item">
+                Лидерство
+                <div class="graph" data-percent={{ leadership_kpi }}></div>
+            </div>
+
+            <div class="result_view__item">
+                Работа в команде
+                <div class="graph" data-percent={{ teamwork_kpi }}></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

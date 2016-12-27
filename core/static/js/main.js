@@ -4,20 +4,25 @@
 
 var cards;
 
-function show(cards){
+function show(cards,trigger){
+
     if (cards.length>0){
         cards.first().show();
         cards.splice(0,1);
     }
-    else swal("Поля заполнены", "Оценка сохранена", "success");
+    else {
+        if (trigger>0) {
+            swal("Поля заполнены", "Оценка сохранена", "success");
+        }
+    }
 }
 
 $(document).ready(function(){
     cards = $('.scoring-card');
-    show(cards);
+    show(cards,0);
     $('.button-grid__button').click(function(){
         $(this).parent().parent().hide();
-        show(cards);
+        show(cards,1);
     });
 });
 
@@ -30,3 +35,5 @@ $(".js-form-submit").submit(function (e) {
     // TODO: валидация
     $.post(url, data)
 });
+
+$('.graph').percentcircle();
