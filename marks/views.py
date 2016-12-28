@@ -13,7 +13,8 @@ from marks.models import Weight, ClientOrientationMark, ControlMark, Communicati
 
 
 class SuccessMixin(CreateView):
-    success_url = reverse_lazy("core:test")
+    # TODO: hardcode shit
+    success_url = reverse_lazy("core:test", kwargs={'pk': 1})
     template_name_suffix = "_create_form"
 
     def form_valid(self, form):
