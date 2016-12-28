@@ -56,6 +56,12 @@ body{
     float: right;
 }
 
+.scoring-card__row__input::-webkit-outer-spin-button,
+.scoring-card__row__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .button-grid{
     margin: 30px auto;
     width: 350px;
