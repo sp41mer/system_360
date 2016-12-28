@@ -49,12 +49,12 @@ class ProfessionalismMark(UserInheritance):
     reliability = models.IntegerField(verbose_name='Профессиональная надежность',
                                       validators=[MaxValueValidator(10), MinValueValidator(1)])
 
-    sum_of_all = models.IntegerField(verbose_name='Сумма характеристик', default = 0)
+    sum_of_all = models.IntegerField(verbose_name='Сумма характеристик', default=0)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.duty_knowledge+self.motivation+self.time_management+self.details_knowledge+\
-                          self.IT_knowledge+self.learnability+self.work_interest+self.reliability
+        self.sum_of_all = self.duty_knowledge + self.motivation + self.time_management + self.details_knowledge + \
+                          self.IT_knowledge + self.learnability + self.work_interest + self.reliability
         super(ProfessionalismMark, self).save()
 
 
@@ -75,8 +75,8 @@ class ControlMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.feedback+self.motivation+self.personal+self.affair+\
-                          self.delegation+self.goal
+        self.sum_of_all = self.feedback + self.motivation + self.personal + self.affair + \
+                          self.delegation + self.goal
         super(ControlMark, self).save()
 
 
@@ -93,7 +93,7 @@ class CommunicationMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.conflict_free+self.communication+self.diplomacy+self.thoughts
+        self.sum_of_all = self.conflict_free + self.communication + self.diplomacy + self.thoughts
         super(CommunicationMark, self).save()
 
 
@@ -113,7 +113,7 @@ class ClientOrientationMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.contact+self.requirements+self.service+self.accompaniment+self.dissemination
+        self.sum_of_all = self.contact + self.requirements + self.service + self.accompaniment + self.dissemination
         super(ClientOrientationMark, self).save()
 
 
@@ -133,7 +133,7 @@ class EfficiencyMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.quality+self.planning+self.timely+self.performance+self.efficiency
+        self.sum_of_all = self.quality + self.planning + self.timely + self.performance + self.efficiency
         super(EfficiencyMark, self).save()
 
 
@@ -153,7 +153,7 @@ class EvolutionMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.innovations+self.info+self.strategies+self.targeting+self.mistakes
+        self.sum_of_all = self.innovations + self.info + self.strategies + self.targeting + self.mistakes
         super(EvolutionMark, self).save()
 
 
@@ -175,8 +175,8 @@ class LeadershipMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.initiative+self.independence+self.relations+self.relations_focus+\
-                          self.formal_leadership+self.informal_leadership
+        self.sum_of_all = self.initiative + self.independence + self.relations + self.relations_focus + \
+                          self.formal_leadership + self.informal_leadership
         super(LeadershipMark, self).save()
 
 
@@ -208,7 +208,7 @@ class TeamworkMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.loyalty+self.teamwork+self.entry_speed+self.adoption_speed+\
-                          self.general_rhythm+self.emotions_control+self.listen+self.delegate+\
-                          self.objectives_lead+self.objectives_comply+self.help
+        self.sum_of_all = self.loyalty + self.teamwork + self.entry_speed + self.adoption_speed + \
+                          self.general_rhythm + self.emotions_control + self.listen + self.delegate + \
+                          self.objectives_lead + self.objectives_comply + self.help
         super(TeamworkMark, self).save()

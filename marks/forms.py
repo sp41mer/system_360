@@ -3,7 +3,7 @@ from django import forms
 from marks.models import Weight, ProfessionalismMark, LeadershipMark, TeamworkMark, ControlMark, CommunicationMark, \
     ClientOrientationMark, EfficiencyMark, EvolutionMark
 
-EXCLUDE_FIELDS = ['who_rated', 'rated_user']
+EXCLUDE_FIELDS = ['who_rated', 'rated_user', 'sum_of_all']
 
 
 class StyleClass(forms.ModelForm):
