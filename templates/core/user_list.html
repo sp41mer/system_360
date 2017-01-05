@@ -7,7 +7,8 @@
     <div class="scoring-card ">
     <div class="scoring-card__title">
             <h4>Оцените данных пользователей</h4>
-        </div>
+    </div>
+    {% if object_list %}
         {% for el in object_list %}
             <div class="scoring-card__row">
                 <span class="scoring-card__row__span">
@@ -17,5 +18,11 @@
                 </span>
             </div>
         {% endfor %}
+    {% else %}
+        <div class="scoring-card__row">
+            Пока не кого оценивать :(
+        </div>
+    {% endif %}
+
     </div>
 {% endblock %}
