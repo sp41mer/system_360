@@ -1,6 +1,5 @@
-from django.contrib.auth.models import User
 from django.views.generic import DetailView
-
+from core.models import User
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     CommunicationMarkCreateForm, ClientOrientationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm

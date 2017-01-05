@@ -27,6 +27,10 @@ class Weight(UserInheritance):
     teamwork = models.IntegerField(verbose_name='Работа в команде',
                                    validators=[MaxValueValidator(10), MinValueValidator(1)])
 
+    class Meta:
+        verbose_name = u'Веса'
+        verbose_name_plural = u'Веса'
+
 
 class ProfessionalismMark(UserInheritance):
     duty_knowledge = models.IntegerField(verbose_name='Знание функциональных обязанностей',
@@ -58,6 +62,10 @@ class ProfessionalismMark(UserInheritance):
                           self.IT_knowledge + self.learnability + self.work_interest + self.reliability
         super(ProfessionalismMark, self).save()
 
+    class Meta:
+        verbose_name = u'Профессионализм'
+        verbose_name_plural = u'Профессионализм'
+
 
 class ControlMark(UserInheritance):
     feedback = models.IntegerField(verbose_name='Предоставление обратной связи подчиненным',
@@ -80,6 +88,10 @@ class ControlMark(UserInheritance):
                           self.delegation + self.goal
         super(ControlMark, self).save()
 
+    class Meta:
+        verbose_name = u'Управление'
+        verbose_name_plural = u'Управление'
+
 
 class CommunicationMark(UserInheritance):
     conflict_free = models.IntegerField(verbose_name='Бесконфликтность',
@@ -96,6 +108,10 @@ class CommunicationMark(UserInheritance):
              update_fields=None):
         self.sum_of_all = self.conflict_free + self.communication + self.diplomacy + self.thoughts
         super(CommunicationMark, self).save()
+
+    class Meta:
+        verbose_name = u'Коммуникация'
+        verbose_name_plural = u'Коммуникация'
 
 
 class ClientOrientationMark(UserInheritance):
@@ -117,6 +133,10 @@ class ClientOrientationMark(UserInheritance):
         self.sum_of_all = self.contact + self.requirements + self.service + self.accompaniment + self.dissemination
         super(ClientOrientationMark, self).save()
 
+    class Meta:
+        verbose_name = u'Клиентоориентированность'
+        verbose_name_plural = u'Клиентоориентированность'
+
 
 class EfficiencyMark(UserInheritance):
     quality = models.IntegerField(verbose_name='Качество работы',
@@ -137,6 +157,10 @@ class EfficiencyMark(UserInheritance):
         self.sum_of_all = self.quality + self.planning + self.timely + self.performance + self.efficiency
         super(EfficiencyMark, self).save()
 
+    class Meta:
+        verbose_name = u'Эффективность, качество работы'
+        verbose_name_plural = u'Эффективность, качество работы'
+
 
 class EvolutionMark(UserInheritance):
     innovations = models.IntegerField(verbose_name='Ориентация на инновации',
@@ -156,6 +180,10 @@ class EvolutionMark(UserInheritance):
              update_fields=None):
         self.sum_of_all = self.innovations + self.info + self.strategies + self.targeting + self.mistakes
         super(EvolutionMark, self).save()
+
+    class Meta:
+        verbose_name = u'Ориентация на развитие'
+        verbose_name_plural = u'Ориентация на развитие'
 
 
 class LeadershipMark(UserInheritance):
@@ -179,6 +207,10 @@ class LeadershipMark(UserInheritance):
         self.sum_of_all = self.initiative + self.independence + self.relations + self.relations_focus + \
                           self.formal_leadership + self.informal_leadership
         super(LeadershipMark, self).save()
+
+    class Meta:
+        verbose_name = u'Лидерство'
+        verbose_name_plural = u'Лидерство'
 
 
 class TeamworkMark(UserInheritance):
@@ -213,3 +245,7 @@ class TeamworkMark(UserInheritance):
                           self.general_rhythm + self.emotions_control + self.listen + self.delegate + \
                           self.objectives_lead + self.objectives_comply + self.help
         super(TeamworkMark, self).save()
+
+    class Meta:
+        verbose_name = u'Работа в команде'
+        verbose_name_plural = u'Работа в команде'
