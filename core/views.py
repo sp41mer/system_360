@@ -1,13 +1,15 @@
+from django.http import Http404
 from django.views.generic import DetailView
 from django.views.generic import ListView
 
+from core.mixins import AccessMixin
 from core.models import User
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     CommunicationMarkCreateForm, ClientOrientationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm
 
 
-class Main360System(DetailView):
+class Main360System(DetailView, AccessMixin):
     model = User
     template_name = 'index.html'
 

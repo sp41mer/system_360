@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils import timezone
-
 from core.models import User
 
 
@@ -18,7 +17,7 @@ class Evaluating(models.Model):
 
 
 def add_week():
-    timezone.now() + timezone.timedelta(days=7)
+    return timezone.now() + timezone.timedelta(days=7)
 
 
 class Interview(models.Model):
