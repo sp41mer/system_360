@@ -16,6 +16,10 @@ class AccessMixin(View):
 
         self.eval_user = selection.users_to_eval.filter(eval_user=self.request.user).first()
 
+        pk = kwargs.get('pk', None)
+        if pk and pk not in [str(el) for el in self.eval_user.estimated_users.all().values_list('id', flat=True)]:
+                raise Http404
+
         if self.eval_user:
             return super(AccessMixin, self).dispatch(request)
         else:
