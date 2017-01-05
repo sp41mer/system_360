@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+
+from core.models import User
 
 
 class UserInheritance(models.Model):

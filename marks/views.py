@@ -1,10 +1,9 @@
-from django.contrib.auth.models import User
 from django.db.models import Avg
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
+from core.models import User
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     ClientOrientationMarkCreateForm, CommunicationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm
