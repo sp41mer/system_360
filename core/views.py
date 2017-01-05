@@ -1,4 +1,6 @@
 from django.views.generic import DetailView
+from django.views.generic import ListView
+
 from core.models import User
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     CommunicationMarkCreateForm, ClientOrientationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
