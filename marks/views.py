@@ -1,9 +1,13 @@
 from django.db.models import Avg
+from django.db.models import Q
+from django.utils import timezone
+from django.http import Http404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
 from core.models import User
+from interview.models import Interview
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     ClientOrientationMarkCreateForm, CommunicationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm
@@ -68,6 +72,20 @@ class LeadershipMarkCreateView(SuccessCreateView):
 class TeamworkMarkCreateView(SuccessCreateView):
     model = TeamworkMark
     form_class = TeamworkMarkCreateForm
+
+    def form_valid(self, form):
+        user_id = self.request.POST.get('user_id', None)
+        if user_id:
+            now = timezone.now().date()
+            selection = Interview.objects.filter(Q(start_date__lte=now) & Q(end_date__gte=now)).first()
+
+            if not selection:
+                raise Http404
+
+            already_estimated_users = selection.users_to_eval.filter(eval_user=self.request.user).first().already_estimated_users
+            estimated_user = User.objects.filter(id=user_id).first()
+            already_estimated_users.add(estimated_user)
+        return super(TeamworkMarkCreateView, self).form_valid(form)
 
 
 class ResultView(TemplateView):
