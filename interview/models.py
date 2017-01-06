@@ -7,6 +7,7 @@ from core.models import User
 class Evaluating(models.Model):
     eval_user = models.ForeignKey(related_name='evaluating_user', verbose_name='Оценивающий пользователь', to=User)
     estimated_users = models.ManyToManyField(related_name='estimated_users', verbose_name='Оцениваемые пользователи', to=User)
+    already_estimated_users = models.ManyToManyField(related_name='already_estimated', verbose_name='Оцененые пользователи', to=User)
 
     def __str__(self):
         return u'{} {}'.format(self.eval_user.first_name, self.eval_user.last_name)

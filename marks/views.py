@@ -11,9 +11,8 @@ from marks.models import Weight, ClientOrientationMark, ControlMark, Communicati
     EfficiencyMark, EvolutionMark, LeadershipMark, TeamworkMark
 
 
-class SuccessMixin(CreateView):
-    # TODO: hardcode shit
-    success_url = reverse_lazy("core:test", kwargs={'pk': 1})
+class SuccessCreateView(CreateView):
+    success_url = reverse_lazy("interview:estimate_list")
     template_name_suffix = "_create_form"
 
     def form_valid(self, form):
@@ -21,52 +20,52 @@ class SuccessMixin(CreateView):
         if user_id:
             form.instance.who_rated = self.request.user
             form.instance.rated_user = User.objects.filter(id=user_id).first()
-            return super(SuccessMixin, self).form_valid(form)
+            return super(SuccessCreateView, self).form_valid(form)
         else:
             return ValueError
 
 
-class WeightCreateView(SuccessMixin):
+class WeightCreateView(SuccessCreateView):
     model = Weight
     form_class = WeightCreateForm
 
 
-class ProfessionalismMarkCreateView(SuccessMixin):
+class ProfessionalismMarkCreateView(SuccessCreateView):
     model = ProfessionalismMark
     form_class = ProfessionalismMarkCreateForm
 
 
-class ControlMarkCreateView(SuccessMixin):
+class ControlMarkCreateView(SuccessCreateView):
     model = ControlMark
     form_class = ControlMarkCreateForm
 
 
-class CommunicationMarkCreateView(SuccessMixin):
+class CommunicationMarkCreateView(SuccessCreateView):
     model = CommunicationMark
     form_class = CommunicationMarkCreateForm
 
 
-class ClientOrientationMarkCreateView(SuccessMixin):
+class ClientOrientationMarkCreateView(SuccessCreateView):
     model = ClientOrientationMark
     form_class = ClientOrientationMarkCreateForm
 
 
-class EfficiencyMarkCreateView(SuccessMixin):
+class EfficiencyMarkCreateView(SuccessCreateView):
     model = EfficiencyMark
     form_class = EfficiencyMarkCreateForm
 
 
-class EvolutionMarkCreateView(SuccessMixin):
+class EvolutionMarkCreateView(SuccessCreateView):
     model = EvolutionMark
     form_class = EvolutionMarkCreateForm
 
 
-class LeadershipMarkCreateView(SuccessMixin):
+class LeadershipMarkCreateView(SuccessCreateView):
     model = LeadershipMark
     form_class = LeadershipMarkCreateForm
 
 
-class TeamworkMarkCreateView(SuccessMixin):
+class TeamworkMarkCreateView(SuccessCreateView):
     model = TeamworkMark
     form_class = TeamworkMarkCreateForm
 
