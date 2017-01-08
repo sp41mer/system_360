@@ -1,10 +1,13 @@
-from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.db.models import Q
+from django.utils import timezone
+from django.http import Http404
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
+from core.models import User
+from interview.models import Interview
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
     ClientOrientationMarkCreateForm, CommunicationMarkCreateForm, EfficiencyMarkCreateForm, EvolutionMarkCreateForm, \
     TeamworkMarkCreateForm, LeadershipMarkCreateForm
@@ -12,8 +15,8 @@ from marks.models import Weight, ClientOrientationMark, ControlMark, Communicati
     EfficiencyMark, EvolutionMark, LeadershipMark, TeamworkMark
 
 
-class SuccessMixin(CreateView):
-    success_url = reverse_lazy("core:test")
+class SuccessCreateView(CreateView):
+    success_url = reverse_lazy("interview:estimate_list")
     template_name_suffix = "_create_form"
 
     def form_valid(self, form):
@@ -21,54 +24,68 @@ class SuccessMixin(CreateView):
         if user_id:
             form.instance.who_rated = self.request.user
             form.instance.rated_user = User.objects.filter(id=user_id).first()
-            return super(SuccessMixin, self).form_valid(form)
+            return super(SuccessCreateView, self).form_valid(form)
         else:
             return ValueError
 
 
-class WeightCreateView(SuccessMixin):
+class WeightCreateView(SuccessCreateView):
     model = Weight
     form_class = WeightCreateForm
 
 
-class ProfessionalismMarkCreateView(SuccessMixin):
+class ProfessionalismMarkCreateView(SuccessCreateView):
     model = ProfessionalismMark
     form_class = ProfessionalismMarkCreateForm
 
 
-class ControlMarkCreateView(SuccessMixin):
+class ControlMarkCreateView(SuccessCreateView):
     model = ControlMark
     form_class = ControlMarkCreateForm
 
 
-class CommunicationMarkCreateView(SuccessMixin):
+class CommunicationMarkCreateView(SuccessCreateView):
     model = CommunicationMark
     form_class = CommunicationMarkCreateForm
 
 
-class ClientOrientationMarkCreateView(SuccessMixin):
+class ClientOrientationMarkCreateView(SuccessCreateView):
     model = ClientOrientationMark
     form_class = ClientOrientationMarkCreateForm
 
 
-class EfficiencyMarkCreateView(SuccessMixin):
+class EfficiencyMarkCreateView(SuccessCreateView):
     model = EfficiencyMark
     form_class = EfficiencyMarkCreateForm
 
 
-class EvolutionMarkCreateView(SuccessMixin):
+class EvolutionMarkCreateView(SuccessCreateView):
     model = EvolutionMark
     form_class = EvolutionMarkCreateForm
 
 
-class LeadershipMarkCreateView(SuccessMixin):
+class LeadershipMarkCreateView(SuccessCreateView):
     model = LeadershipMark
     form_class = LeadershipMarkCreateForm
 
 
-class TeamworkMarkCreateView(SuccessMixin):
+class TeamworkMarkCreateView(SuccessCreateView):
     model = TeamworkMark
     form_class = TeamworkMarkCreateForm
+
+    def form_valid(self, form):
+        user_id = self.request.POST.get('user_id', None)
+        if user_id:
+            now = timezone.now().date()
+            selection = Interview.objects.filter(Q(start_date__lte=now) & Q(end_date__gte=now)).first()
+
+            if not selection:
+                raise Http404
+
+            already_estimated_users = selection.users_to_eval.filter(eval_user=self.request.user).first().already_estimated_users
+            estimated_user = User.objects.filter(id=user_id).first()
+            already_estimated_users.add(estimated_user)
+        return super(TeamworkMarkCreateView, self).form_valid(form)
 
 
 class ResultView(TemplateView):

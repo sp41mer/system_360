@@ -11,6 +11,7 @@ urlpatterns = [
 
     url(r'^core/', include('core.urls', 'core')),
     url(r'^marks/', include('marks.urls', 'marks')),
+    url(r'^interview/', include('interview.urls', 'interview')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

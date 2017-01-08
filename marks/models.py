@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+
+from core.models import User
 
 
 class UserInheritance(models.Model):
@@ -25,6 +26,10 @@ class Weight(UserInheritance):
     leader = models.IntegerField(verbose_name='Лидерство', validators=[MaxValueValidator(10), MinValueValidator(1)])
     teamwork = models.IntegerField(verbose_name='Работа в команде',
                                    validators=[MaxValueValidator(10), MinValueValidator(1)])
+
+    class Meta:
+        verbose_name = u'Веса'
+        verbose_name_plural = u'Веса'
 
 
 class ProfessionalismMark(UserInheritance):
@@ -49,13 +54,17 @@ class ProfessionalismMark(UserInheritance):
     reliability = models.IntegerField(verbose_name='Профессиональная надежность',
                                       validators=[MaxValueValidator(10), MinValueValidator(1)])
 
-    sum_of_all = models.IntegerField(verbose_name='Сумма характеристик', default = 0)
+    sum_of_all = models.IntegerField(verbose_name='Сумма характеристик', default=0)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.duty_knowledge+self.motivation+self.time_management+self.details_knowledge+\
-                          self.IT_knowledge+self.learnability+self.work_interest+self.reliability
+        self.sum_of_all = self.duty_knowledge + self.motivation + self.time_management + self.details_knowledge + \
+                          self.IT_knowledge + self.learnability + self.work_interest + self.reliability
         super(ProfessionalismMark, self).save()
+
+    class Meta:
+        verbose_name = u'Профессионализм'
+        verbose_name_plural = u'Профессионализм'
 
 
 class ControlMark(UserInheritance):
@@ -75,9 +84,13 @@ class ControlMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.feedback+self.motivation+self.personal+self.affair+\
-                          self.delegation+self.goal
+        self.sum_of_all = self.feedback + self.motivation + self.personal + self.affair + \
+                          self.delegation + self.goal
         super(ControlMark, self).save()
+
+    class Meta:
+        verbose_name = u'Управление'
+        verbose_name_plural = u'Управление'
 
 
 class CommunicationMark(UserInheritance):
@@ -93,8 +106,12 @@ class CommunicationMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.conflict_free+self.communication+self.diplomacy+self.thoughts
+        self.sum_of_all = self.conflict_free + self.communication + self.diplomacy + self.thoughts
         super(CommunicationMark, self).save()
+
+    class Meta:
+        verbose_name = u'Коммуникация'
+        verbose_name_plural = u'Коммуникация'
 
 
 class ClientOrientationMark(UserInheritance):
@@ -113,8 +130,12 @@ class ClientOrientationMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.contact+self.requirements+self.service+self.accompaniment+self.dissemination
+        self.sum_of_all = self.contact + self.requirements + self.service + self.accompaniment + self.dissemination
         super(ClientOrientationMark, self).save()
+
+    class Meta:
+        verbose_name = u'Клиентоориентированность'
+        verbose_name_plural = u'Клиентоориентированность'
 
 
 class EfficiencyMark(UserInheritance):
@@ -133,8 +154,12 @@ class EfficiencyMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.quality+self.planning+self.timely+self.performance+self.efficiency
+        self.sum_of_all = self.quality + self.planning + self.timely + self.performance + self.efficiency
         super(EfficiencyMark, self).save()
+
+    class Meta:
+        verbose_name = u'Эффективность, качество работы'
+        verbose_name_plural = u'Эффективность, качество работы'
 
 
 class EvolutionMark(UserInheritance):
@@ -153,8 +178,12 @@ class EvolutionMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.innovations+self.info+self.strategies+self.targeting+self.mistakes
+        self.sum_of_all = self.innovations + self.info + self.strategies + self.targeting + self.mistakes
         super(EvolutionMark, self).save()
+
+    class Meta:
+        verbose_name = u'Ориентация на развитие'
+        verbose_name_plural = u'Ориентация на развитие'
 
 
 class LeadershipMark(UserInheritance):
@@ -175,9 +204,13 @@ class LeadershipMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.initiative+self.independence+self.relations+self.relations_focus+\
-                          self.formal_leadership+self.informal_leadership
+        self.sum_of_all = self.initiative + self.independence + self.relations + self.relations_focus + \
+                          self.formal_leadership + self.informal_leadership
         super(LeadershipMark, self).save()
+
+    class Meta:
+        verbose_name = u'Лидерство'
+        verbose_name_plural = u'Лидерство'
 
 
 class TeamworkMark(UserInheritance):
@@ -208,7 +241,11 @@ class TeamworkMark(UserInheritance):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.sum_of_all = self.loyalty+self.teamwork+self.entry_speed+self.adoption_speed+\
-                          self.general_rhythm+self.emotions_control+self.listen+self.delegate+\
-                          self.objectives_lead+self.objectives_comply+self.help
+        self.sum_of_all = self.loyalty + self.teamwork + self.entry_speed + self.adoption_speed + \
+                          self.general_rhythm + self.emotions_control + self.listen + self.delegate + \
+                          self.objectives_lead + self.objectives_comply + self.help
         super(TeamworkMark, self).save()
+
+    class Meta:
+        verbose_name = u'Работа в команде'
+        verbose_name_plural = u'Работа в команде'

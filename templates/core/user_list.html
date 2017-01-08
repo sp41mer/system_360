@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="main-title">
+            СИСТЕМА ОЦЕНИВАНИЯ 360 ГРАДУСОВ
+    </div>
+    <div class="scoring-card ">
+    <div class="scoring-card__title">
+            <h4>Оцените данных пользователей</h4>
+    </div>
+    {% if object_list %}
+        {% for el in object_list %}
+            <div class="scoring-card__row">
+                <span class="scoring-card__row__span">
+                    <a href="{% url "core:test" pk=el.id %}">
+                        {{ el.first_name }} {{ el.patronymic_name }} {{ el.last_name }}
+                    </a>
+                </span>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="scoring-card__row">
+            Пока не кого оценивать :(
+        </div>
+    {% endif %}
+
+    </div>
+{% endblock %}
