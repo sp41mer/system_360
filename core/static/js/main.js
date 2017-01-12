@@ -32,8 +32,17 @@ $(document).ready(function(){
     cards = $('.scoring-card');
     show(cards,0);
     $('.button-grid__button').click(function(){
-        $(this).parent().parent().hide();
-        show(cards,1);
+        var correct = true;
+        var arrayOfMarks = $(this).parent().parent().find('input');
+        arrayOfMarks.each(function(key,value){if (value.value == '') correct = false})
+        if (correct){
+            $(this).parent().parent().hide();
+            show(cards,1);
+        }
+        else{
+            swal("Ошибка","Заполните поля","error")
+        }
+
     });
 });
 
