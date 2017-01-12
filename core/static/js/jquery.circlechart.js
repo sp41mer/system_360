@@ -57,7 +57,7 @@
 				that.each(function(){
 					var $this = $(this),
 					    //we need to check for a percent otherwise set to 0;
-						perc = Math.round($this.data('percent')*100), //get the percentage from the element
+						perc = Math.round(parseFloat($this.data('percent').replace(',','.'))*100), //get the percentage from the element
 						deg = perc * 3.6,
 						stop = options.animate ? 0 : deg,
 						$chart = $(template.replace('{{percentage}}',perc+' баллов'));

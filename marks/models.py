@@ -2,6 +2,7 @@
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 
 from core.models import User
 
@@ -9,6 +10,7 @@ from core.models import User
 class UserInheritance(models.Model):
     who_rated = models.ForeignKey(verbose_name='Оценивший пользователь', to=User, related_name='who_rated')
     rated_user = models.ForeignKey(verbose_name='Оцениваемый пользователь', to=User, related_name='rated_user')
+    date_create = models.DateTimeField(verbose_name='Дата выставления оценки', default=timezone.now)
 
 
 class Weight(UserInheritance):

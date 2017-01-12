@@ -2,6 +2,7 @@
  * Created by sp41mer on 17.12.16.
  */
 
+const resultUrl = '/marks/result/'
 var cards;
 
 function show(cards,trigger){
@@ -11,9 +12,19 @@ function show(cards,trigger){
         cards.splice(0,1);
     }
     else {
-        if (trigger>0) {
-            swal("Поля заполнены", "Оценка сохранена", "success");
-        }
+       if (trigger>0) {
+            swal({
+                title: "Поля заполнены",
+                text: "Оценка сохранена",
+                type: "success",
+                confirmButtonText: "OK",
+                closeOnConfirm: false
+            },
+                function(){
+                    var ratedUser = window.location.href.split('/').slice(-1)[0];
+                    window.location = resultUrl+ratedUser;
+                });
+         }
     }
 }
 
@@ -28,12 +39,22 @@ $(document).ready(function(){
 
 $(".js-form-submit").submit(function (e) {
     e.preventDefault();
-
     var url = $(this).attr('action');
     var user_id = $(".marked_user__id").val();
     var data = $(this).serialize() + "&user_id=" + user_id;
-    // TODO: валидация
+
     $.post(url, data)
 });
 
 $('.graph').percentcircle();
+
+//КУСОК С ВАЛИДАЦИЕЙ
+$('.scoring-card__row__input').keyup(function () {
+    if ($(this).val()>10 || $(this).val()<0){
+        $(this).val(0);
+    }
+});
+
+
+
+

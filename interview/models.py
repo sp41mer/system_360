@@ -27,8 +27,8 @@ class Interview(models.Model):
                                 default=add_week)
     users_to_eval = models.ManyToManyField(Evaluating)
 
-    def __str__(self):
-        return u'Начало опроса: {} Конец опроса: {}'.format(self.start_date, self.start_date)
+    # def __str__(self):
+    #     return u'Начало опроса: {} Конец опроса: {}'.format(self.start_date, self.start_date)
 
     class Meta:
         verbose_name = u'Опрос'

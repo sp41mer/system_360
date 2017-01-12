@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
+from core.mixins import AccessMixin
 from core.models import User
 from interview.models import Interview
 from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, ControlMarkCreateForm, \
@@ -14,6 +15,12 @@ from marks.forms import WeightCreateForm, ProfessionalismMarkCreateForm, Control
 from marks.models import Weight, ClientOrientationMark, ControlMark, CommunicationMark, ProfessionalismMark, \
     EfficiencyMark, EvolutionMark, LeadershipMark, TeamworkMark
 
+
+list_of_marks = [
+    ProfessionalismMark, ControlMark, 
+    CommunicationMark, ClientOrientationMark, EfficiencyMark, 
+    EvolutionMark, LeadershipMark, TeamworkMark
+]
 
 class SuccessCreateView(CreateView):
     success_url = reverse_lazy("interview:estimate_list")
@@ -87,59 +94,90 @@ class TeamworkMarkCreateView(SuccessCreateView):
             already_estimated_users.add(estimated_user)
         return super(TeamworkMarkCreateView, self).form_valid(form)
 
-
+#TODO: Optimize that shit
 class ResultView(TemplateView):
     template_name = 'marks/result_view.html'
     def get_context_data(self, **kwargs):
         res = super(ResultView, self).get_context_data(**kwargs)
-
         pk = kwargs.get("pk")
+        user = res.get('view').request.user.id
         if pk:
             self.user = User.objects.filter(id=pk).first()
-            weight_query = Weight.objects.filter(rated_user=pk)
-            professionalism_mark_query = ProfessionalismMark.objects.filter(rated_user=pk)
+            now = timezone.now().date()
+            selection = Interview.objects.filter(Q(start_date__lte=now) & Q(end_date__gte=now)).first()
+
+            weight_query = Weight.objects.filter(Q(rated_user=pk) & 
+                                                 Q(date_create__lte=selection.end_date) & 
+                                                 Q(date_create__gte=selection.start_date) &
+                                                 Q(who_rated=user))
+            
+            professionalism_mark_query = ProfessionalismMark.objects.filter(Q(rated_user=pk) & 
+                                                 Q(date_create__lte=selection.end_date) & 
+                                                 Q(date_create__gte=selection.start_date) &
+                                                 Q(who_rated=user))
             professionalism_mark = professionalism_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             professionalism_mark_count = len(
                 ProfessionalismMark._meta.get_fields(include_parents=False,include_hidden=False))-2
             professionalism_mark_weight = weight_query.aggregate(
                 Avg('professionalism')).get('professionalism__avg')
-            control_mark_query = ControlMark.objects.filter(rated_user=pk)
+            control_mark_query = ControlMark.objects.filter(Q(rated_user=pk) &
+                                                            Q(date_create__lte=selection.end_date) &
+                                                            Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             control_mark = control_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             control_mark_weight = weight_query.aggregate(
                 Avg('control')).get('control__avg')
             control_mark_count = len(
                 ControlMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            commnication_mark_query = CommunicationMark.objects.filter(rated_user=pk)
+            commnication_mark_query = CommunicationMark.objects.filter(Q(rated_user=pk) &
+                                                                       Q(date_create__lte=selection.end_date) &
+                                                                       Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             communication_mark = commnication_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             communication_mark_weight = weight_query.aggregate(
                 Avg('communication')).get('communication__avg')
             communication_mark_count = len(
                 CommunicationMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            client_orientation_mark_query = ClientOrientationMark.objects.filter(rated_user=pk)
+            client_orientation_mark_query = ClientOrientationMark.objects.filter(Q(rated_user=pk) &
+                                                                                 Q(date_create__lte=selection.end_date) &
+                                                                                 Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             client_orientation_mark = client_orientation_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             client_orientation_weight = weight_query.aggregate(
                 Avg('client_orientation')).get('client_orientation__avg')
             client_orientation_mark_count = len(
                 ClientOrientationMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            efficiency_mark_query = EfficiencyMark.objects.filter(rated_user=pk)
+            efficiency_mark_query = EfficiencyMark.objects.filter(Q(rated_user=pk) &
+                                                                  Q(date_create__lte=selection.end_date) &
+                                                                  Q(date_create__gte=selection.start_date) &
+                                                                  Q(who_rated=user))
             efficiency_mark = efficiency_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             efficiency_mark_weight = weight_query.aggregate(
                 Avg('efficiency')).get('efficiency__avg')
             efficiency_mark_count = len(
                 EfficiencyMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            evolution_mark_query = EvolutionMark.objects.filter(rated_user=pk)
+            evolution_mark_query = EvolutionMark.objects.filter(Q(rated_user=pk) &
+                                                                Q(date_create__lte=selection.end_date) &
+                                                                Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             evolution_mark = evolution_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             evolution_mark_weight = weight_query.aggregate(
                 Avg('evolution')).get('evolution__avg')
             evolution_mark_count = len(
                 EvolutionMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            leadership_mark_query = LeadershipMark.objects.filter(rated_user=pk)
+            leadership_mark_query = LeadershipMark.objects.filter(Q(rated_user=pk) &
+                                                                  Q(date_create__lte=selection.end_date) &
+                                                                  Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             leadership_mark = leadership_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             leadership_mark_weight = weight_query.aggregate(
                 Avg('leader')).get('leader__avg')
             leadership_mark_count = len(
                 LeadershipMark._meta.get_fields(include_parents=False, include_hidden=False)) - 2
-            teamwork_mark_query = TeamworkMark.objects.filter(rated_user=pk)
+            teamwork_mark_query = TeamworkMark.objects.filter(Q(rated_user=pk) &
+                                                              Q(date_create__lte=selection.end_date) &
+                                                              Q(date_create__gte=selection.start_date)&
+                                                 Q(who_rated=user))
             teamwork_mark = teamwork_mark_query.aggregate(Avg('sum_of_all')).get('sum_of_all__avg')
             teamwork_mark_weight = weight_query.aggregate(
                 Avg('teamwork')).get('teamwork__avg')
@@ -166,7 +204,6 @@ class ResultView(TemplateView):
             "leadership_kpi": self.leadership_kpi,
             "teamwork_kpi": self.teamwork_kpi
         })
-
         return res
 
     def calculate_mark(self,weight,mark,number):
